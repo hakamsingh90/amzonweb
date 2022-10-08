@@ -17,6 +17,12 @@ public class AmazonTest extends BaseClass {
         PageBaseClass pageBase = new PageBaseClass(driver,logger);
         PageFactory.initElements(driver,pageBase);
         landingPage= pageBase.openWebPage();
+        landingPage.clickOnHamberMenu()
+                .clickOnTVAppliancesElectronics()
+                .clickOnTelevision();
+
+
+
 
 
 
