@@ -40,13 +40,13 @@ public class LandingPage extends PageBaseClass {
         return landingPage;
     }
 
-    public LandingPage clickOnTelevision(){
+    public TelevisionsPage clickOnTelevision(){
         logger.log(Status.PASS,"click on Televisions under Tv, Audio & Cameras sub section");
         Televisions.click();
         waitLoad(1);
-        LandingPage landingPage = new LandingPage(driver,logger);
-        PageFactory.initElements(driver,landingPage);
-        return landingPage;
+        TelevisionsPage televisionsPage = new TelevisionsPage(driver,logger);
+        PageFactory.initElements(driver,televisionsPage);
+        return televisionsPage;
 
     }
 
