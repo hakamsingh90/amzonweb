@@ -20,22 +20,50 @@ public class TelevisionsPage extends PageBaseClass {
     @FindBy(xpath = "//*[@class=\"a-dropdown-container\"]//select")
     WebElement dropDown;
 
+    @FindBy(xpath = "//*[@data-index='2']//img")
+    WebElement secondHighPriceTV;
+
+
+
+
+
 
     public TelevisionsPage selectBrand(){
-        logger.log(Status.PASS,"Scroll down and filter the results by Brand Samsung");
-        waitLoad(1);
-        scrollToElement(brand);
-        brand.click();
+        try {
+            scrollToElement(brand);
+            brand.click();
+            logger.log(Status.PASS,"Scroll down and filter the results by Brand Samsung");
+        } catch (Exception e) {
+            reportFail(e.getMessage());
+        }
         TelevisionsPage televisionsPage = new TelevisionsPage(driver,logger);
         PageFactory.initElements(driver,televisionsPage);
         return televisionsPage;
 
     }
 
-    public void sortByPrice(){
-        logger.log(Status.PASS,"Sort the Samsung results with price High to Low");
-        waitLoad(1);
-        selectDropDownValue(dropDown,"Price: High to Lw");
+    public TelevisionsPage sortByPrice(){
+        selectDropDownValue(dropDown,"Price: High to Low");
+        TelevisionsPage televisionsPage = new TelevisionsPage(driver,logger);
+        PageFactory.initElements(driver,televisionsPage);
+        return televisionsPage;
     }
+
+    public Electronics clickOnSecondHighestPricedItem(){
+
+        try {
+            secondHighPriceTV.click();
+            logger.log(Status.PASS,"Click on the second highest priced item");
+
+        } catch (Exception e) {
+            reportFail(e.getMessage());
+        }
+
+        Electronics electronics = new Electronics(driver,logger);
+        PageFactory.initElements(driver,electronics);
+        return electronics;
+
+    }
+
 }
 

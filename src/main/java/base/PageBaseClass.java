@@ -12,6 +12,8 @@ import utils.DateUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 public class PageBaseClass extends BaseClass{
     public ExtentTest logger;
@@ -44,7 +46,7 @@ public class PageBaseClass extends BaseClass{
         try {
             Select select = new Select(webElement);
             select.selectByVisibleText(value);
-            logger.log(Status.PASS, "Selectd the Value : " + value);
+            logger.log(Status.PASS, "Selected the Value : " + value);
         } catch (Exception e) {
             reportFail(e.getMessage());
         }
@@ -70,6 +72,22 @@ public class PageBaseClass extends BaseClass{
             e.printStackTrace();
         }
 
+    }
+
+
+    public String switchToWindow(){
+
+        String mainwindow = driver.getWindowHandle();
+        Set<String> s1 = driver.getWindowHandles();
+        Iterator<String> i1 = s1.iterator();
+
+        while (i1.hasNext()) {
+            String ChildWindow = i1.next();
+            if (!mainwindow.equalsIgnoreCase(ChildWindow)) {
+                driver.switchTo().window(ChildWindow);
+            }
+        }
+        return mainwindow;
     }
 
 

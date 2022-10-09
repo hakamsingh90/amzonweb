@@ -4,6 +4,7 @@ import base.BaseClass;
 import base.PageBaseClass;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
+import pageObject.Electronics;
 import pageObject.LandingPage;
 import pageObject.TelevisionsPage;
 
@@ -11,10 +12,11 @@ public class AmazonTest extends BaseClass {
 
     LandingPage landingPage;
     TelevisionsPage televisionsPage;
+    Electronics electronics;
 
     @Test
     public void openAmazonHomePage(){
-        logger = report.createTest("navigate to amazon home page");
+        logger = report.createTest("Navigate to amazon home page");
         setUp("Chrome");
         PageBaseClass pageBase = new PageBaseClass(driver,logger);
         PageFactory.initElements(driver,pageBase);
@@ -26,11 +28,8 @@ public class AmazonTest extends BaseClass {
         televisionsPage.selectBrand()
                 .sortByPrice();
 
-
-
-
-
-
+        electronics = televisionsPage.clickOnSecondHighestPricedItem();
+        electronics.verifyNewWindowItem();
 
     }
 }

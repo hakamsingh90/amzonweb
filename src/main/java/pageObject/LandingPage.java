@@ -24,26 +24,40 @@ public class LandingPage extends PageBaseClass {
     public WebElement Televisions;
 
     public LandingPage clickOnHamberMenu() {
-        logger.log(Status.PASS,"Clicking on hamburger menu");
-        HamburgerMenu.click();
+
+        try {
+            HamburgerMenu.click();
+            logger.log(Status.PASS,"Clicking on hamburger menu");
+            waitLoad(1);
+        } catch (Exception e) {
+            reportFail(e.getMessage());
+        }
         LandingPage landingPage = new LandingPage(driver,logger);
         PageFactory.initElements(driver,landingPage);
         return landingPage;
     }
 
     public LandingPage clickOnTVAppliancesElectronics(){
-        logger.log(Status.PASS,"Click on the TV, Appliances and Electronics link under Shop by Department section");
-        TVAppliancesElectronics.click();
-        waitLoad(1);
+        try {
+            TVAppliancesElectronics.click();
+            logger.log(Status.PASS,"Click on the TV, Appliances and Electronics link under Shop by Department section");
+        } catch (Exception e) {
+            reportFail(e.getMessage());
+        }
         LandingPage landingPage = new LandingPage(driver,logger);
         PageFactory.initElements(driver,landingPage);
         return landingPage;
     }
 
     public TelevisionsPage clickOnTelevision(){
-        logger.log(Status.PASS,"click on Televisions under Tv, Audio & Cameras sub section");
-        Televisions.click();
-        waitLoad(1);
+        try {
+            Televisions.click();
+            logger.log(Status.PASS,"click on Televisions under Tv, Audio & Cameras sub section");
+            waitLoad(2);
+        } catch (Exception e) {
+            reportFail(e.getMessage());
+        }
+
         TelevisionsPage televisionsPage = new TelevisionsPage(driver,logger);
         PageFactory.initElements(driver,televisionsPage);
         return televisionsPage;

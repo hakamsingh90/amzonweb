@@ -53,7 +53,7 @@ public class BaseClass {
     @AfterMethod
     public void flushReports() {
         report.flush();
-        driver.close();
+        driver.quit();
     }
 
 
