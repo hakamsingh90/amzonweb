@@ -25,9 +25,9 @@ public class PageBaseClass extends BaseClass{
 
     // Open web page
 
-    public LandingPage openWebPage(){
+    public LandingPage openWebPage(String URL){
         logger.log(Status.INFO,"Opening the amazon site");
-        driver.get("https://www.amazon.in/");
+        driver.get(URL);
         logger.log(Status.PASS, "Successfully amazon page opened");
         LandingPage landingPage = new LandingPage(driver,logger);
         PageFactory.initElements(driver,landingPage);

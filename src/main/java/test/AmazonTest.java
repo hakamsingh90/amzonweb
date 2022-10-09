@@ -17,10 +17,10 @@ public class AmazonTest extends BaseClass {
     @Test
     public void openAmazonHomePage(){
         logger = report.createTest("Navigate to amazon home page");
-        setUp("Chrome");
+        setUp(getInstanceOfProp().getProperty("Browser"));
         PageBaseClass pageBase = new PageBaseClass(driver,logger);
         PageFactory.initElements(driver,pageBase);
-        landingPage= pageBase.openWebPage();
+        landingPage= pageBase.openWebPage(getInstanceOfProp().getProperty("URL"));
         landingPage.clickOnHamberMenu()
                 .clickOnTVAppliancesElectronics();
 

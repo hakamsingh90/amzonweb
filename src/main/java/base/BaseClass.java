@@ -12,6 +12,12 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import utils.ExtentReportManager;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class BaseClass {
 
     public WebDriver driver;
@@ -91,5 +97,22 @@ public class BaseClass {
         }
     }
 
+    public Properties getInstanceOfProp() {
+
+        Properties prop = new Properties();
+        InputStream readFile = null;
+
+        {
+            try {
+                readFile = new FileInputStream(System.getProperty("user.dir") +"/config/config.properties");
+                prop.load(readFile);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return prop;
+    }
 
 }
