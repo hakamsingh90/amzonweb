@@ -19,7 +19,7 @@ Chrome driver is attached in Driver package. You can update the driver according
 If you want to run this with a different browser .The driver can be found in the drivers folder.
 
 ## Running Tests:
-* Clone the repo :
+* Clone the repo : https://github.com/hakamsingh90/amzonweb.git
 * check POM.xml file formate 
 * Build the project by command : mvn dependency:resolve
 * Setup testng Configuration 
